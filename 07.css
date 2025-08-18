@@ -1,0 +1,121 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #eef2f7;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3d52a0;
+            margin-bottom: 1rem;
+        }
+
+        /* --- CHANGE: Using CSS Grid for layout --- */
+        #box {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            border-top: 5px solid #3d52a0;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2-column grid */
+            gap: 15px; /* Space between grid items */
+            align-items: center;
+        }
+
+        /* Making text elements span the full width */
+        #para, #writer {
+            grid-column: 1 / -1; /* Span across all columns */
+            text-align: center;
+        }
+        
+        #para {
+            font-size: 1.7rem;
+            font-weight: 500;
+            color: #333;
+            line-height: 1.6;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #writer {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #555;
+            font-style: italic;
+            min-height: 20px; /* Prevents layout shift */
+        }
+
+        /* --- CHANGE: New styling for regular buttons --- */
+        /* Using :not() to exclude the tweet button */
+        #box button:not([onclick="tweet()"]) {
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #3d52a0;
+            background: transparent;
+            border: 2px solid #3d52a0;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #box button:not([onclick="tweet()"]):hover {
+            background: #3d52a0;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        
+        /* --- CHANGE: New distinct styling for the Tweet button with linear-gradient --- */
+        button[onclick="tweet()"] {
+            grid-column: 1 / -1; /* Make Tweet button span full width */
+            padding: 12px 20px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(90deg, #17232b 0%, #000000 100%);
+            border: none;
+            border-radius: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(29, 161, 242, 0.3);
+        }
+        
+        button[onclick="tweet()"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(29, 161, 242, 0.4);
+        }
+
+      
+
+        /* Responsive Design for smaller screens */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            #box {
+                padding: 20px;
+                grid-template-columns: 1fr; /* Switch to a single column layout */
+            }
+            #para {
+                font-size: 1.2rem;
+                min-height: 100px;
+            }
+        }
